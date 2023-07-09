@@ -1,18 +1,15 @@
 import Button from './Button'
 
-const SearchResults = ({countries}) => {
+const SearchResults = ({countries, handleViewSingleCountry}) => {
+    console.log("Countries:", countries)
+    countries.map(country => console.log(country.name.official))
     if (countries.length <= 10){
         return (
             <div>
                 {countries
-                    .map(country => {
-                        <div>   
-                            <p key={country.name.official}>{country.name.common}</p>
-                            <button onClick={} value={"select"}></button>
-                        </div>
-                    })    
+                    .map(country => <><p key={country.name.official}>{country.name.common}</p><Button eventHandler={handleViewSingleCountry(country.name.common)} text={"View"} /></> )    
                 }
-            </div>
+            </div>        
         )
     }
     return (
